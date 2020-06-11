@@ -4,6 +4,7 @@ juana.rincon@urosario.edu.co
 ja.rincong@uniandes.edu.co"
 
 "Assignment 3 - Potential Outcomes and OLS"
+#Instructions to this script are in this very repository: "causal-inference-course/Assignment 3/Instructions".
 
 "Preliminary Organization"
 
@@ -16,7 +17,7 @@ ja.rincong@uniandes.edu.co"
   setwd(Juancho)
   
   #Packages
-  packs <- c("tidyverse","doBy","gdata","ggforce","haven","Hmisc","lubridate","rdd","readxl","sandwich","stargazer")
+  packs <- c("tidyverse","doBy","gdata","ggforce","haven","Hmisc","lubridate","rdd","readxl","sandwich","stargazer","dagitty")
   sapply(packs,require,character=TRUE)
   
 "----------------------------------Potential Outcomes----------------------------------"
@@ -58,17 +59,32 @@ ja.rincong@uniandes.edu.co"
   summary(mdl2_fit)
   
   #Beautiful Table 1
-  stargazer(mdl1_fit,mdl2_fit)
+  stargazer(mdl1_fit,mdl2_fit,
+            title = "Regression results for models (a) and (b). Note: standard errors are in parentheses. Made in R with the \texttt{stargazer} package.",
+            out = "Tables/Table1.tex",
+            column.labels = c("(a)","(b)"),
+            model.names = T, multicolumn = T
+            )
   
+  #Auxiliary regression
+  aux_mdl <- D ~ Age
+  aux_mdl_fit <- lm(formula = aux_mdl, data = pd_ols)
+  summary(aux_mdl_fit)
   
+  #Residual of the Auxiliary regression
+  pd_ols$D2 <- aux_mdl_fit$residuals
+  mdl3 <- Y ~ D2
+  mdl3_fit <- lm(formula = mdl3, data = pd_ols)  
+  summary(mdl3_fit)  
+
+  #Beautiful Table 2
+  stargazer(mdl2_fit,aux_mdl_fit,mdl3_fit,
+            title = "Regression results for the linear model equations in (c).", 
+            out = "Tables/Table2.tex",
+            model.names = T, multicolumn = T, model.numbers = T
+            )
   
-  
-  
-  
-  
-  
-  
-  
+
   
   
   
