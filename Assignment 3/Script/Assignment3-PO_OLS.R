@@ -19,17 +19,59 @@ ja.rincong@uniandes.edu.co"
   packs <- c("tidyverse","doBy","gdata","ggforce","haven","Hmisc","lubridate","rdd","readxl","sandwich","stargazer")
   sapply(packs,require,character=TRUE)
   
-"----------------------------------OLS----------------------------------"
+"----------------------------------Potential Outcomes----------------------------------"
 
   #Dataset Creation
   Patient <- seq(1,11,1)
   Y1 <- c(1,1,1,5,5,6,7,7,8,9,10)
   Y0 <- c(10,5,4,6,1,7,8,10,2,6,7)
   Age <- c(29,35,19,45,65,50,77,18,85,96,77)
-  #Perfecto Doctor Data Frame
+  #Perfect Doctor Data Frame
   pd <- data.frame(Patient,Y1,Y0,Age)
+  
+  #Variable Creation
+  pd <- pd %>% mutate(TE=Y1-Y0) %>% mutate(D=ifelse(TE>0,1,0)) %>% mutate(Y=ifelse(TE>0,Y1,Y0))
+  ATE <- mean(pd$TE)
+  SDO <- mean(pd$Y1[pd$D==1])-mean(pd$Y0[pd$D==0])
+  ATT <- mean(pd$TE[pd$D==1])
+  ATU <- mean(pd$TE[pd$D==0])
+  Sel_Bias <- mean(pd$Y0[pd$D==1])-mean(pd$Y0[pd$D==0])
+  HTE_Bias <- ATT-ATU
 
-    
+  #Calculation proof
+  ATE+Sel_Bias+HTE_Bias*(1-mean(pd$D))
+  SDO
+
+"----------------------------------Ordinary Least Squares----------------------------------"
+  
+  #Dataset from perfect doctor
+  pd_ols <- pd %>% select(D,Age,Y)
+  
+  #Estimation model 1
+  mdl1 <- Y ~ D
+  mdl1_fit <- lm(formula = mdl1, data = pd_ols)
+  summary(mdl1_fit)
+  
+  #Estimation model 2, controlling for age
+  mdl2 <- Y ~ D + Age
+  mdl2_fit <- lm(formula = mdl2, data = pd_ols)
+  summary(mdl2_fit)
+  
+  #Beautiful Table 1
+  stargazer(mdl1_fit,mdl2_fit)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
