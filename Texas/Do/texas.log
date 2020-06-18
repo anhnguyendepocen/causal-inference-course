@@ -1,0 +1,447 @@
+
+. 
+. 
+. * ssc install synth, replace
+. 
+. * Estimation 1: Texas model of black male prisoners (per capita)
+. use ../Data/texas.dta, replace
+
+. 
+end of do-file
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. 
+. 
+. #delimit;
+delimiter now ;
+. synth   bmprison 
+>                 bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988)
+>                 alcohol(1990) aidscapita(1990) aidscapita(1991) 
+>                 income ur poverty black(1990) black(1991) black(1992) 
+>                 perc1519(1990)
+>                 ,               
+>                 trunit(48) trperiod(1993) unitnames(state) 
+>                 mspeperiod(1985(1)1993) resultsperiod(1985(1)2000)
+>                 keep(../data/synth/synth_bmprate.dta) replace fig;
+-------------------------------------------------------------------------------------------------------------------
+Synthetic Control Method for Comparative Case Studies
+-------------------------------------------------------------------------------------------------------------------
+
+First Step: Data Setup
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Data Setup successful
+-------------------------------------------------------------------------------------------------------------------
+                Treated Unit: Texas
+               Control Units: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,
+                              District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa,
+                              Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota,
+                              Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New
+                              Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,
+                              Rhode Island, South Carolina, South Dakota, Tennessee, Utah, Vermont, Virginia,
+                              Washington, West Virginia, Wisconsin, Wyoming
+-------------------------------------------------------------------------------------------------------------------
+          Dependent Variable: bmprison
+  MSPE minimized for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993
+Results obtained for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000
+-------------------------------------------------------------------------------------------------------------------
+                  Predictors: bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988) alcohol(1990)
+                              aidscapita(1990) aidscapita(1991) income ur poverty black(1990) black(1991)
+                              black(1992) perc1519(1990)
+-------------------------------------------------------------------------------------------------------------------
+Unless period is specified
+predictors are averaged over: 1985 1986 1987 1988 1989 1990 1991 1992
+-------------------------------------------------------------------------------------------------------------------
+
+Second Step: Run Optimization
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Optimization done
+-------------------------------------------------------------------------------------------------------------------
+
+Third Step: Obtain Results
+-------------------------------------------------------------------------------------------------------------------
+Loss: Root Mean Squared Prediction Error
+
+---------------------
+   RMSPE |  1295.489 
+---------------------
+-------------------------------------------------------------------------------------------------------------------
+Unit Weights:
+
+----------------------------------
+               Co_No | Unit_Weight
+---------------------+------------
+             Alabama |           0
+              Alaska |           0
+             Arizona |           0
+            Arkansas |           0
+          California |        .408
+            Colorado |           0
+         Connecticut |           0
+            Delaware |           0
+District of Columbia |           0
+             Florida |        .109
+             Georgia |           0
+              Hawaii |           0
+               Idaho |           0
+            Illinois |         .36
+             Indiana |           0
+                Iowa |           0
+              Kansas |           0
+            Kentucky |           0
+           Louisiana |        .122
+               Maine |           0
+            Maryland |           0
+       Massachusetts |           0
+            Michigan |           0
+           Minnesota |           0
+         Mississippi |           0
+            Missouri |           0
+             Montana |           0
+            Nebraska |           0
+              Nevada |           0
+       New Hampshire |           0
+          New Jersey |           0
+          New Mexico |           0
+            New York |           0
+      North Carolina |           0
+        North Dakota |           0
+                Ohio |           0
+            Oklahoma |           0
+              Oregon |           0
+        Pennsylvania |           0
+        Rhode Island |           0
+      South Carolina |           0
+        South Dakota |           0
+           Tennessee |           0
+                Utah |           0
+             Vermont |           0
+            Virginia |           0
+          Washington |           0
+       West Virginia |           0
+           Wisconsin |           0
+             Wyoming |           0
+----------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Predictor Balance:
+
+------------------------------------------------------
+                               |   Treated  Synthetic 
+-------------------------------+----------------------
+                bmprison(1990) |     22634    23134.8 
+                bmprison(1992) |     27568   25776.34 
+                bmprison(1991) |     23249   24272.24 
+                bmprison(1988) |     16956   18374.28 
+                 alcohol(1990) |      2.47    2.70996 
+              aidscapita(1990) |  13.58992   14.99957 
+              aidscapita(1991) |  14.83504   17.24535 
+                        income |  16108.63   18614.54 
+                            ur |  7.426042   7.188876 
+                       poverty |      17.2   14.86484 
+                   black(1990) |  16.15459   15.98038 
+                   black(1991) |  16.29985   16.16835 
+                   black(1992) |  16.45955   16.37467 
+                perc1519(1990) |  7.703001   7.022702 
+------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+file ../data/synth/synth_bmprate.dta could not be opened
+r(603);
+
+end of do-file
+
+r(603);
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. 
+. #delimit;
+delimiter now ;
+. synth   bmprison 
+>                 bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988)
+>                 alcohol(1990) aidscapita(1990) aidscapita(1991) 
+>                 income ur poverty black(1990) black(1991) black(1992) 
+>                 perc1519(1990)
+>                 ,               
+>                 trunit(48) trperiod(1993) unitnames(state) 
+>                 mspeperiod(1985(1)1993) resultsperiod(1985(1)2000)
+>                 keep(../Data/synth/synth_bmprate.dta) replace fig;
+-------------------------------------------------------------------------------------------------------------------
+Synthetic Control Method for Comparative Case Studies
+-------------------------------------------------------------------------------------------------------------------
+
+First Step: Data Setup
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Data Setup successful
+-------------------------------------------------------------------------------------------------------------------
+                Treated Unit: Texas
+               Control Units: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,
+                              District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa,
+                              Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota,
+                              Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New
+                              Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,
+                              Rhode Island, South Carolina, South Dakota, Tennessee, Utah, Vermont, Virginia,
+                              Washington, West Virginia, Wisconsin, Wyoming
+-------------------------------------------------------------------------------------------------------------------
+          Dependent Variable: bmprison
+  MSPE minimized for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993
+Results obtained for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000
+-------------------------------------------------------------------------------------------------------------------
+                  Predictors: bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988) alcohol(1990)
+                              aidscapita(1990) aidscapita(1991) income ur poverty black(1990) black(1991)
+                              black(1992) perc1519(1990)
+-------------------------------------------------------------------------------------------------------------------
+Unless period is specified
+predictors are averaged over: 1985 1986 1987 1988 1989 1990 1991 1992
+-------------------------------------------------------------------------------------------------------------------
+
+Second Step: Run Optimization
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Optimization done
+-------------------------------------------------------------------------------------------------------------------
+
+Third Step: Obtain Results
+-------------------------------------------------------------------------------------------------------------------
+Loss: Root Mean Squared Prediction Error
+
+---------------------
+   RMSPE |  1295.489 
+---------------------
+-------------------------------------------------------------------------------------------------------------------
+Unit Weights:
+
+----------------------------------
+               Co_No | Unit_Weight
+---------------------+------------
+             Alabama |           0
+              Alaska |           0
+             Arizona |           0
+            Arkansas |           0
+          California |        .408
+            Colorado |           0
+         Connecticut |           0
+            Delaware |           0
+District of Columbia |           0
+             Florida |        .109
+             Georgia |           0
+              Hawaii |           0
+               Idaho |           0
+            Illinois |         .36
+             Indiana |           0
+                Iowa |           0
+              Kansas |           0
+            Kentucky |           0
+           Louisiana |        .122
+               Maine |           0
+            Maryland |           0
+       Massachusetts |           0
+            Michigan |           0
+           Minnesota |           0
+         Mississippi |           0
+            Missouri |           0
+             Montana |           0
+            Nebraska |           0
+              Nevada |           0
+       New Hampshire |           0
+          New Jersey |           0
+          New Mexico |           0
+            New York |           0
+      North Carolina |           0
+        North Dakota |           0
+                Ohio |           0
+            Oklahoma |           0
+              Oregon |           0
+        Pennsylvania |           0
+        Rhode Island |           0
+      South Carolina |           0
+        South Dakota |           0
+           Tennessee |           0
+                Utah |           0
+             Vermont |           0
+            Virginia |           0
+          Washington |           0
+       West Virginia |           0
+           Wisconsin |           0
+             Wyoming |           0
+----------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Predictor Balance:
+
+------------------------------------------------------
+                               |   Treated  Synthetic 
+-------------------------------+----------------------
+                bmprison(1990) |     22634    23134.8 
+                bmprison(1992) |     27568   25776.34 
+                bmprison(1991) |     23249   24272.24 
+                bmprison(1988) |     16956   18374.28 
+                 alcohol(1990) |      2.47    2.70996 
+              aidscapita(1990) |  13.58992   14.99957 
+              aidscapita(1991) |  14.83504   17.24535 
+                        income |  16108.63   18614.54 
+                            ur |  7.426042   7.188876 
+                       poverty |      17.2   14.86484 
+                   black(1990) |  16.15459   15.98038 
+                   black(1991) |  16.29985   16.16835 
+                   black(1992) |  16.45955   16.37467 
+                perc1519(1990) |  7.703001   7.022702 
+------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+file ../Data/synth/synth_bmprate.dta could not be opened
+r(603);
+
+end of do-file
+
+r(603);
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. * Estimation 1: Texas model of black male prisoners (per capita)
+. use ../Data/texas.dta, replace
+
+. 
+. 
+. 
+. #delimit;
+delimiter now ;
+. synth   bmprison 
+>                 bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988)
+>                 alcohol(1990) aidscapita(1990) aidscapita(1991) 
+>                 income ur poverty black(1990) black(1991) black(1992) 
+>                 perc1519(1990)
+>                 ,               
+>                 trunit(48) trperiod(1993) unitnames(state) 
+>                 mspeperiod(1985(1)1993) resultsperiod(1985(1)2000)
+>                 keep(../Data/synth/synth_bmprate.dta) replace fig;
+-------------------------------------------------------------------------------------------------------------------
+Synthetic Control Method for Comparative Case Studies
+-------------------------------------------------------------------------------------------------------------------
+
+First Step: Data Setup
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Data Setup successful
+-------------------------------------------------------------------------------------------------------------------
+                Treated Unit: Texas
+               Control Units: Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,
+                              District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa,
+                              Kansas, Kentucky, Louisiana, Maine, Maryland, Massachusetts, Michigan, Minnesota,
+                              Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New
+                              Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania,
+                              Rhode Island, South Carolina, South Dakota, Tennessee, Utah, Vermont, Virginia,
+                              Washington, West Virginia, Wisconsin, Wyoming
+-------------------------------------------------------------------------------------------------------------------
+          Dependent Variable: bmprison
+  MSPE minimized for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993
+Results obtained for periods: 1985 1986 1987 1988 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000
+-------------------------------------------------------------------------------------------------------------------
+                  Predictors: bmprison(1990) bmprison(1992) bmprison(1991) bmprison(1988) alcohol(1990)
+                              aidscapita(1990) aidscapita(1991) income ur poverty black(1990) black(1991)
+                              black(1992) perc1519(1990)
+-------------------------------------------------------------------------------------------------------------------
+Unless period is specified
+predictors are averaged over: 1985 1986 1987 1988 1989 1990 1991 1992
+-------------------------------------------------------------------------------------------------------------------
+
+Second Step: Run Optimization
+-------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Optimization done
+-------------------------------------------------------------------------------------------------------------------
+
+Third Step: Obtain Results
+-------------------------------------------------------------------------------------------------------------------
+Loss: Root Mean Squared Prediction Error
+
+---------------------
+   RMSPE |  1295.489 
+---------------------
+-------------------------------------------------------------------------------------------------------------------
+Unit Weights:
+
+----------------------------------
+               Co_No | Unit_Weight
+---------------------+------------
+             Alabama |           0
+              Alaska |           0
+             Arizona |           0
+            Arkansas |           0
+          California |        .408
+            Colorado |           0
+         Connecticut |           0
+            Delaware |           0
+District of Columbia |           0
+             Florida |        .109
+             Georgia |           0
+              Hawaii |           0
+               Idaho |           0
+            Illinois |         .36
+             Indiana |           0
+                Iowa |           0
+              Kansas |           0
+            Kentucky |           0
+           Louisiana |        .122
+               Maine |           0
+            Maryland |           0
+       Massachusetts |           0
+            Michigan |           0
+           Minnesota |           0
+         Mississippi |           0
+            Missouri |           0
+             Montana |           0
+            Nebraska |           0
+              Nevada |           0
+       New Hampshire |           0
+          New Jersey |           0
+          New Mexico |           0
+            New York |           0
+      North Carolina |           0
+        North Dakota |           0
+                Ohio |           0
+            Oklahoma |           0
+              Oregon |           0
+        Pennsylvania |           0
+        Rhode Island |           0
+      South Carolina |           0
+        South Dakota |           0
+           Tennessee |           0
+                Utah |           0
+             Vermont |           0
+            Virginia |           0
+          Washington |           0
+       West Virginia |           0
+           Wisconsin |           0
+             Wyoming |           0
+----------------------------------
+-------------------------------------------------------------------------------------------------------------------
+Predictor Balance:
+
+------------------------------------------------------
+                               |   Treated  Synthetic 
+-------------------------------+----------------------
+                bmprison(1990) |     22634    23134.8 
+                bmprison(1992) |     27568   25776.34 
+                bmprison(1991) |     23249   24272.24 
+                bmprison(1988) |     16956   18374.28 
+                 alcohol(1990) |      2.47    2.70996 
+              aidscapita(1990) |  13.58992   14.99957 
+              aidscapita(1991) |  14.83504   17.24535 
+                        income |  16108.63   18614.54 
+                            ur |  7.426042   7.188876 
+                       poverty |      17.2   14.86484 
+                   black(1990) |  16.15459   15.98038 
+                   black(1991) |  16.29985   16.16835 
+                   black(1992) |  16.45955   16.37467 
+                perc1519(1990) |  7.703001   7.022702 
+------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+file ../Data/synth/synth_bmprate.dta could not be opened
+r(603);
+
+end of do-file
+
+r(603);
+
+. exit

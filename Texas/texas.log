@@ -1,0 +1,39 @@
+
+. 
+. 
+. * ssc install synth, replace
+. 
+. * Estimation 1: Texas model of black male prisoners (per capita)
+. use ../Data/texas.dta, replace
+file ../Data/texas.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. * ssc install synth, replace
+. 
+end of do-file
+
+. ssc install synth, replace
+checking synth consistency and verifying not already installed...
+installing into /Users/ja.rincong/Library/Application Support/Stata/ado/plus/...
+installation complete.
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. cd "/Users/ja.rincong/Git/causal-inference-course/Texas"
+/Users/ja.rincong/Git/causal-inference-course/Texas
+
+. 
+end of do-file
+
+. do "/var/folders/f5/pn7z6msj0fj9pl8gzphdgqq00000gn/T//SD24565.000000"
+
+. cd "/Users/ja.rincong/Git/causal-inference-course/Texas/Do"
+/Users/ja.rincong/Git/causal-inference-course/Texas/Do
+
+. capture log close
